@@ -1,0 +1,39 @@
+﻿<local:BasePage x:Class="RaceGame.LoadGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RaceGame"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300" Background="White" 
+      Title="LoadGamePage">
+
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Name="btnnBackMenu" Content="BACK TO MENU" Margin="5"   Command="{Binding BackMenuCommand}"
+                VerticalAlignment="Center" FontSize="15" FontFamily="Baskerville,Georgia" />
+        <Button DockPanel.Dock="Bottom"  Margin="5" Name="btnStartGame"  Content="START GAME" Command="{Binding ToPlayerInterfaceCommand}"
+                               VerticalAlignment="Center" FontSize="15" FontFamily="Baskerville,Georgia" />
+        <ListBox Name="lstBoxPlayerList"  Margin="5" ItemsSource="{Binding PlayersList}" SelectedItem="{Binding SelectedPlayer}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Label Name="lblPlayerName" DockPanel.Dock="Left" Width="200" Content="{Binding Name}"
+                               Margin="5 0 0 0" VerticalAlignment="Center" FontSize="15" FontFamily="Baskerville,Georgia" />
+                        <Label Name="lblCoins"  DockPanel.Dock="Right"  Content="{Binding Coins}" Margin="5 0 0 0"
+                               VerticalAlignment="Center" FontSize="15" FontFamily="Baskerville,Georgia" />
+                        <Image Name="imgCoins" DockPanel.Dock="Right" Height="40" Width="40"
+                               HorizontalAlignment="Center" Stretch="Fill" Margin="5 0 0 0"
+                               Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                        AncestorType={x:Type ListBox}},Path=DataContext.CoinImagePath}" />
+                        <Label Name="lblLevel"  DockPanel.Dock="Right"  Content="{Binding Level}" Margin="5 0 0 0"
+                               VerticalAlignment="Center" FontSize="15" FontFamily="Baskerville,Georgia" />
+                        <Image Name="imgLevel" DockPanel.Dock="Right" Height="40" Width="40"
+                               HorizontalAlignment="Center" Stretch="Fill" Margin="5 0 0 0"
+                               Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                        AncestorType={x:Type ListBox}},Path=DataContext.LevelImagePath}" />
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </DockPanel>
+</local:BasePage>

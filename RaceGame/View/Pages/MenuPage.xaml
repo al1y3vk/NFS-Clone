@@ -1,0 +1,31 @@
+﻿<local:BasePage x:Class="RaceGame.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RaceGame"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="700" Background="White" DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Title="MenuPage">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="{Binding MenuImage}"
+                AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" >
+            <Label  Grid.Row="0" Content="NEED FOR SCROLL" HorizontalAlignment="Center"  VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"  FontSize="42" FontFamily="Baskerville,Georgia" />
+            <Label  Grid.Row="0" Content="MOST CLICKED" HorizontalAlignment="Center"  VerticalAlignment="Center" FontWeight="Bold" FontStyle="Italic"  FontSize="68" FontFamily="Baskerville,Georgia" />
+        </StackPanel>
+        <Button Grid.Row="1" Name="NewGamebutton" Content="New game" VerticalAlignment="Center" Margin="8 -50 8 0" Height="67" FontSize="22" FontFamily="Baskerville,Georgia"  Command="{Binding ToPlayerCreationCommand}"  />
+        <Button Grid.Row="2" Name="LoadGamebutton" Content="Load game" VerticalAlignment="Center" Margin="8 -50 8 0" Height="67" FontSize="22" FontFamily="Baskerville,Georgia" Command="{Binding ToLoadGameCommand}"   />
+
+        <Button Grid.Row="3" Name="Exitbutton" Content="Exit" VerticalAlignment="Center" Margin="8 -50 8 0" Height="67" FontSize="22"  FontFamily="Baskerville,Georgia" Click="Exitbutton_Click"  />
+    </Grid>
+</local:BasePage>

@@ -1,0 +1,133 @@
+﻿<local:BasePage x:Class="RaceGame.GaragePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RaceGame"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500" Background="White" 
+      Title="GaragePage">
+
+    <DockPanel>
+        <Button DockPanel.Dock="Bottom" Name="BackButton" Content="BACK" Margin="0,2,0,2" FontSize="13" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" Width="97" Command="{Binding BackPlayerInterfaceCommand}" />
+        <Grid Margin="0 0 0 3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="0 0 2 0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Name="lblPlayerCar" Content="{Binding PlayerCar.ShopCar.Name}" FontSize="12" Margin="0 -2 0 0"  FontFamily="Baskerville,Georgia" HorizontalAlignment="Center"  />
+                    <DockPanel  Grid.Row="1">
+                        <Button DockPanel.Dock="Left" Name="btnPrevPlayerCar" Content="←" Height="30" Margin="2 0 0 0" Command="{Binding PrevPlayerCarCommand}" />
+                        <Button DockPanel.Dock="Right" Name="btnNextPlayerCar"  Content="→" Height="30" Margin="0 0 2 0" Command="{Binding NextPlayerCarCommand}" />
+                        <DockPanel DockPanel.Dock="Bottom" >
+                            <Button Name="btnPreColor" Content="←" Height="30" Margin="2 0 0 0" DockPanel.Dock="Left" Command="{Binding PrevCarColorCommand}" />
+                            <Button  Name="btnNextColor" Content="→" Height="30" Margin="0 0 2 0"  DockPanel.Dock="Right" Command="{Binding NextCarColorCommand}"  />
+                            <Label Name="lblCarColor" Content="{Binding PlayerCar.Color}" FontSize="15" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                        </DockPanel>
+                        <Image  Name="imgPlayerCar" Source="{Binding PlayerCar.ShopCar.ImagePath}"  />
+                    </DockPanel>
+                </Grid>
+                <Grid Grid.Column="1" Margin="0 0 0 0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <Image   Name="CoinImage" Source="{Binding CoinImagePath}" Stretch="Fill" Height="40" HorizontalAlignment="Center" />
+                        <Label Name="CoinsQuantityLabel" Margin="2 0 0 0" Content="{Binding Player.Coins}" VerticalAlignment="Center" FontSize="14" />
+                    </StackPanel>
+                    <DockPanel Grid.Row="1">
+                        <Button DockPanel.Dock="Right" Name="btnUpgradeEngine"  Width="100"  Height="35" FontSize="13" Margin="0 2 2 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" Command="{Binding EngineUpgradeLevelCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                    <Label Content="{Binding EngineUpgradePrice}" Foreground="White" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Label  DockPanel.Dock="Right" Name="lblEngineLevel" VerticalAlignment="Center" FontSize="15" Content="{Binding PlayerCar.EngineLevel}" />
+                        <Label  Content="Engine" FontSize="15" VerticalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="2" >
+                        <Button DockPanel.Dock="Right" Name="btnUpgradeClutch"  Width="100"  Height="35" FontSize="13" Margin="0 2 2 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia"  Command="{Binding ClutchUpgradeLevelCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                    <Label Content="{Binding ClutchUpgradePrice}" Foreground="White" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Label DockPanel.Dock="Right" Name="lblClutchLevel" Content="{Binding PlayerCar.ClutchLevel}" FontSize="15" VerticalAlignment="Center"  />
+                        <Label Content="Clutch"  FontSize="15" VerticalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="3" >
+                        <Button DockPanel.Dock="Right" Name="btnUpgradeTransmission"  Width="100"  Height="35" FontSize="13" Margin="0 2 2 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia"  Command="{Binding TransmissionUpgradeLevelCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                    <Label Content="{Binding TransmissionUpgradePrice}" Foreground="White" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Label DockPanel.Dock="Right" Name="lblTransmissionLevel" Content="{Binding PlayerCar.TransmissionLevel}" FontSize="15" VerticalAlignment="Center" />
+                        <Label Content="Transmission"  FontSize="13" Margin="-6 0 0 0" VerticalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                    </DockPanel>
+                    <DockPanel Grid.Row="4" >
+                        <Button DockPanel.Dock="Right"  Name="btnUpgradeFuelcapacity"  Width="100"  Height="35" FontSize="13" Margin="0 2 2 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia"   Command="{Binding FuelCapacityUpgradeLevelCommand}" >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                    <Label Content="{Binding FuelCapacityUpgradePrice}" Foreground="White" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Label DockPanel.Dock="Right" Name="lblFuelCapacityLevel" Content="{Binding PlayerCar.FuelCapacityLevel}" FontSize="15" VerticalAlignment="Center" />
+                        <Label Content="Fuel capacity"  FontSize="13" Margin="-6 0 0 0" VerticalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                    </DockPanel>
+                </Grid>
+
+            </Grid>
+            <GridSplitter VerticalAlignment="Stretch"   Grid.Row="1" HorizontalAlignment="Stretch" />
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6.1*"/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" >
+                    <Label DockPanel.Dock="Left" Name="CarShopLabel" Content="Car shop" Height="28" FontSize="16" FontFamily="Baskerville,Georgia" Margin="0,-7,0,0" />
+                    <Label  Name="lblShopCarName" Content="{Binding ShopCar.Name}"  Height="28" FontSize="12" Margin="0,-6,0,0" HorizontalAlignment="Center"  FontFamily="Baskerville,Georgia" />
+                </DockPanel>
+
+                <DockPanel Grid.Row="1">
+
+                    <Button DockPanel.Dock="Left" Name="btnPrevShopCar"  Content="←" Height="30" Margin="2 0 0 0" Command="{Binding PrevShopCarCommand}" />
+                    <Button DockPanel.Dock="Right" Name="btnNextShopCar" Content="→" Height="30" Margin="0 0 2 0" Command="{Binding NextShopCarCommand}" />
+                    <Button DockPanel.Dock="Bottom" Name="btnBuyShopCar"  Width="120"  Height="35" FontSize="13" Margin="0 2 0 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" Command="{Binding BuyShopCarCommand}" >
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                <Label Content="{Binding ShopCarPrice}" Foreground="White" />
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    
+                    <Image  Name="imgShopCar"  Source="{Binding ShopCar.ImagePath}" />
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</local:BasePage>

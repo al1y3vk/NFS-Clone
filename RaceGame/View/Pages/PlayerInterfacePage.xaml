@@ -1,0 +1,98 @@
+﻿<local:BasePage x:Class="RaceGame.PlayerInterfacePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RaceGame"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="500" Background="White" 
+      Title="PlayerInterfacePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <Label  Name="PlayerNamelabel" Content="Player name:" FontSize="11" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" />
+                    <Label Name="PlayerActualNameLabel" Content="{Binding Player.Name}" HorizontalAlignment="Center" Margin="0 -10 0 0" FontSize="20"  FontFamily="Baskerville,Georgia" />
+                </StackPanel>
+                <Border Grid.Row="1" BorderThickness="1" Margin="5" BorderBrush="Black">
+                    <Image   Name="imgCar" HorizontalAlignment="Center" Source="{Binding PlayerCar.ShopCar.ImagePath}" />
+                </Border>
+
+            </Grid>
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Image   Name="LevelImage" Source="{Binding LevelImagePath}" Stretch="Fill" Height="40" HorizontalAlignment="Center" />
+                    <Label Name="LevelAmountLabel" Margin="10 0 20 0"  VerticalAlignment="Center" FontSize="13" Content="{Binding Player.Level}" />
+                    <Image   Name="CoinImage" Source="{Binding CoinImagePath}" Stretch="Fill" Height="40" HorizontalAlignment="Center" />
+                    <Label Name="CoinsQuantityLabel" Margin="5 0 0 0"  VerticalAlignment="Center" FontSize="13" Content="{Binding Player.Coins, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+
+                <Button Grid.Row="1" Name="GarageButton" Content="GARAGE" Margin="5" Command="{Binding ToGarageCommand}" FontFamily="Baskerville,Georgia" />
+                <Button Grid.Row="2" Name="btnLeaderboard" Content="LEADERBOARD" Margin="5" FontFamily="Baskerville,Georgia" Command="{Binding ToLeaderboardCommand}" />
+                <Button Grid.Row="3" Name="ReturnMenubutton" Content="RETURN TO MENU" Margin="5" Command="{Binding ReturnMenuCommand}" FontFamily="Baskerville,Georgia" />
+            </Grid>
+        </Grid>
+        <DockPanel Grid.Row="1" Margin="0 0 0 10" >
+            <DockPanel DockPanel.Dock="Bottom" VerticalAlignment="Center" >
+                <Button DockPanel.Dock="Left" Name="btnGoRace" Content="Go To Race" Margin="20 0 0 0" Width="130" FontSize="13" FontFamily="Baskerville,Georgia" Command="{Binding GoRaceCommand}" />
+                <Button  DockPanel.Dock="Right" Name="btnGoAdventure" Content="Go To Adventure" Margin="0 0 20 0" Width="130" FontSize="13"  FontFamily="Baskerville,Georgia" HorizontalAlignment="Right" Command="{Binding GoAdventureCommand}" />
+            </DockPanel>
+            <Border  BorderThickness="2" Margin="5" BorderBrush="Black" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="7*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Vertical" >
+
+                        <DockPanel>
+                            <Label DockPanel.Dock="Left" Content="Distance" FontSize="15" FontFamily="Baskerville,Georgia" />
+                            <TextBlock DockPanel.Dock="Left" Name="txtBlockDistance" FontSize="15" FontFamily="Baskerville,Georgia" Text="{Binding Road.Distance,StringFormat={}{0} km}" Padding="0 5 0 0"  />
+                            <TextBlock DockPanel.Dock="Right" Name="txtBlockPlayerMade"  FontSize="15" FontFamily="Baskerville,Georgia" Margin="0 0 2 0" Text="{Binding PlayerDistance,StringFormat={}{0} km}" Padding="0 5 0 0" />
+                            <Label DockPanel.Dock="Right"  Content="Player made" FontSize="15" FontFamily="Baskerville,Georgia" />
+                            <Label  Name="RoadNameLabel"  HorizontalAlignment="Center" FontSize="18"  FontFamily="Baskerville,Georgia" Content="{Binding Road.Name}" />
+                        </DockPanel>
+                    </StackPanel>
+
+                    <DockPanel Grid.Row="1">
+                        <Button DockPanel.Dock="Left" Name="btnPrevRoad" Content="←" Height="30" Margin="2 0 0 0" Command="{Binding PrevRoadCommand}" />
+                        <Button DockPanel.Dock="Right" Name="btnNextRoad" Content="→" Height="30" Margin="0 0 2 0"  Command="{Binding NextRoadCommand}" />
+                        
+                        <Button DockPanel.Dock="Bottom" Name="btnBuy2Road"  Width="120"  Height="35" FontSize="13" Margin="0 2 0 2" HorizontalAlignment="Center" FontFamily="Baskerville,Georgia" Command="{Binding BuyRoadCommand}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image  Source="{Binding CoinImagePath}" Width="25" Height="25" />
+                                    <Label Content="{Binding RoadPrice}" Foreground="White" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <Image  Name="RoadImage" Source="{Binding Road.ImagePath,Mode=TwoWay}"  />
+                    </DockPanel>
+
+                </Grid>
+
+            </Border>
+
+        </DockPanel>
+        
+    </Grid>
+</local:BasePage>

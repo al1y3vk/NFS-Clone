@@ -1,0 +1,20 @@
+﻿<Window x:Class="RaceGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RaceGame"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="700" DataContext="{Binding RelativeSource={RelativeSource Self}}" ResizeMode="NoResize" >
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top"  >
+            <WrapPanel DockPanel.Dock="Left" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 0 8 0" >
+                <Button Name="btnPlay" Click="btnPlay_Click" Content="▶️" />
+                <Button Name="btnPause" Margin="5,0" Click="btnPause_Click" Content="⏸" />
+                <Button Name="btnStop" Click="btnStop_Click" Content="	⏹" />
+            </WrapPanel>
+            <ComboBox Name="MusicListBox" ItemsSource="{Binding musicList}" Margin="4 0 4 0" SelectionChanged="MusicListBox_SelectionChanged" />
+        </DockPanel>
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</Window>
